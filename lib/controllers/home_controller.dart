@@ -15,6 +15,7 @@ class HomeController extends GetxController {
 
   List<PositionedModel> circleObjects = [];
   double containerHeight = 400;
+  double containerWidth = 280;
   double circleSize = 40;
   String selectedColor = "Green";
   List<String> availableColors = ["Green", "Red"];
@@ -35,7 +36,7 @@ class HomeController extends GetxController {
       PositionedModel object = PositionedModel(
         id: id.toString(),
         color: selectedColor,
-        position: Offset(offset.dx - 40 / 2, offset.dy - 40 / 2),
+        position: Offset(offset.dx - circleSize / 2, offset.dy - circleSize / 2),
       );
       circleObjects.add(object);
       update();
@@ -81,7 +82,7 @@ class HomeController extends GetxController {
     //Identifing Boundry
     double minLeft = 0;
     double minTop = 0;
-    double maxLeft = Get.width - circleSize;
+    double maxLeft = containerWidth - circleSize;
     double maxTop = containerHeight - circleSize;
 
     //Find Index Of Object and Apply Position

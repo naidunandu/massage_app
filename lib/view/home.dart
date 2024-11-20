@@ -47,14 +47,11 @@ class HomeView extends StatelessWidget {
                           final offset = details.localPosition;
                           ctrl.onTapAddObject(offset);
                         },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          color: Colors.white,
-                          height: ctrl.containerHeight,
-                          width: MediaQuery.of(context).size.width,
+                        child: Center(
                           child: Image.asset(
                             "assets/full_body.jpg",
-                            height: 400,
+                            width: ctrl.containerWidth,
+                            height: ctrl.containerHeight,
                           ),
                         ),
                       ),
