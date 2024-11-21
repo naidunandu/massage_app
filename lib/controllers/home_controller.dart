@@ -15,6 +15,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     loadImages();
+    onLoadEvent();
     super.onInit();
   }
 
@@ -128,7 +129,6 @@ class HomeController extends GetxController {
     List? localCircleObjects = getStorage(Constants.circleObjectKey);
     if (localCircleObjects != null) {
       circleObjects = localCircleObjects.map((e) => PositionedModel.fromMap(e)).toList();
-      //log("circleObjects : $circleObjects");
       update();
     }
   }
