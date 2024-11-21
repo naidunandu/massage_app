@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,7 +19,7 @@ class HomeController extends GetxController {
   }
 
   List<PositionedModel> circleObjects = [];
-  double circleSize = 30;
+  double circleSize = 60;
   String selectedColor = "Green";
   List<String> availableColors = ["Green", "Red"];
 
@@ -37,7 +38,6 @@ class HomeController extends GetxController {
 
     baseImage = base;
     maskImage = mask;
-    onLoadEvent();
     update();
   }
 
@@ -119,6 +119,8 @@ class HomeController extends GetxController {
   onSaveEvent() {
     List<Map<String, dynamic>> currentData = circleObjects.map((obj) => obj.toMap()).toList();
     writeStorage(Constants.circleObjectKey, currentData);
+    update();
+    log("circleObjects : $circleObjects");
     successToast("Your selections are saved successfully!");
   }
 
@@ -126,6 +128,7 @@ class HomeController extends GetxController {
     List? localCircleObjects = getStorage(Constants.circleObjectKey);
     if (localCircleObjects != null) {
       circleObjects = localCircleObjects.map((e) => PositionedModel.fromMap(e)).toList();
+      //log("circleObjects : $circleObjects");
       update();
     }
   }
